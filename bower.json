@@ -1,0 +1,24 @@
+{
+  "name": "proangularjs",
+  "description": "Angular Sandbox",
+  "main": "index.js",
+  "authors": [
+    "Marcio Nobrega"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "sandbox"
+  ],
+  "homepage": "https://github.com/mnobrega/proAngularJS",
+  "moduleType": [],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-touch": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "angular-mocks": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-sanitize": "~1.4.8",
+    "angular-locale": "~0.1.10",
+    "bootstrap": "~3.3.6"
+  }
+}
