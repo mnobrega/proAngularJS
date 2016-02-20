@@ -5,8 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "browser-sync": "^2.11.1",
+    "chalk": "^1.1.1",
     "connect": "^3.4.0",
     "gulp": "^3.9.0",
+    "http-proxy": "^1.13.2",
     "require-dir": "^0.3.0",
     "serve-static": "^1.10.0"
   },
