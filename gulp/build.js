@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var paths = gulp.paths;
 
 var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*','main-bower-files','del']
+    pattern: ['gulp-*','main-bower-files','uglify-save-license','del']
 });
 
 //gulp.task("build",function(){
@@ -15,12 +15,65 @@ var $ = require('gulp-load-plugins')({
 //    gulp.src("bower_components/bootstrap/dist/css/**").pipe(gulp.dest("dist/css/"));
 //});
 
-gulp.task('html',['inject'],function() {
+gulp.task('partials', function() {
+    return gulp.src([
+        paths.src + '/{app,components}/**/*.html',
+        paths.tmp + '/{app,components}/**/*.html'
+    ])
+        .pipe($.minifyHtml({
+            empty: true,
+            spare: true,
+            quotes: true
+        }))
+        .pipe($.angularTemplatecache('templateCacheHtml.js',{
+            module: 'proangularjs'
+        }))
+        .pipe(gulp.dest(paths.tmp + '/partials/'));
+});
 
+gulp.task('html',['inject','partials'],function() {
+    var partialsInjectFile = gulp.src(paths.tmp + '/partials/templateCacheHtml.js', { read: false });
+    var partialsInjectOptions = {
+        starttag: '<!-- inject:partials -->',
+        ignorePath: paths.tmp + '/partials',
+        addRootSlash: false
+    };
+
+    var htmlFilter = $.filter('*.html');
+    var jsFilter = $.filter('**/*.js');
+    var cssFilter = $.filter('**/*.css');
+    var assets;
+
+    return gulp.src(paths.tmp + '/serve/*.html')
+        .pipe($.inject(partialsInjectFile, partialsInjectOptions))
+        .pipe(assets = $.useref.assets())
+        .pipe($.rev())
+        .pipe(jsFilter)
+        .pipe($.ngAnnotate())
+        .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
+        .pipe(jsFilter.restore())
+        .pipe(cssFilter)
+        .pipe($.replace('../../bower_components/bootstrap/fonts', '../fonts/'))
+        .pipe($.replace('../../bower_components/fontawesome/fonts', '../fonts/'))
+        .pipe($.csso())
+        .pipe(cssFilter.restore())
+        .pipe(assets.restore())
+        .pipe($.useref())
+        .pipe($.revReplace())
+        .pipe(htmlFilter)
+        .pipe($.minifyHtml({
+            empty: true,
+            spare: true,
+            quotes: true
+        }))
+        .pipe(htmlFilter.restore())
+        .pipe(gulp.dest(paths.dist + '/'))
+        .pipe($.size({ title: paths.dist + '/', showFiles: true }));
 });
 
 gulp.task('i18n',function() {
-    //send to temp as it needs to be compiled
+    gulp.src(paths.tmp+'/serve/assets/i18n/*.json')
+        .pipe(gulp.dest(paths.dist+'/assets/i18n/'));
 });
 
 gulp.task('images',function(){

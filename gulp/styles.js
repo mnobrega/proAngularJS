@@ -18,7 +18,8 @@ gulp.task('styles', function () {
 
   var injectFiles = gulp.src([
     paths.src + '/{app,components}/**/*.less',
-    '!' + paths.src + '/app/index.less'
+    '!' + paths.src + '/app/index.less',
+    '!' + paths.src + '/app/vendor.less'
   ], { read: false });
 
   var injectOptions = {
@@ -35,17 +36,17 @@ gulp.task('styles', function () {
   var indexFilter = $.filter('index.less');
 
   return gulp.src([
-    paths.src + '/app/index.less'
+    paths.src + '/app/index.less',
+    paths.src + '/app/vendor.less'
   ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))
     .pipe(indexFilter.restore())
     .pipe($.less())
-
-  .pipe($.autoprefixer())
-    .on('error', function handleError(err) {
-      console.error(err.toString());
-      this.emit('end');
-    })
+    .pipe($.autoprefixer())
+      .on('error', function handleError(err) {
+        console.error(err.toString());
+        this.emit('end');
+      })
     .pipe(gulp.dest(paths.tmp + '/serve/app/'));
 });
