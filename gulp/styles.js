@@ -18,8 +18,7 @@ gulp.task('styles', function () {
 
   var injectFiles = gulp.src([
     paths.src + '/{app,components}/**/*.less',
-    '!' + paths.src + '/app/index.less',
-    '!' + paths.src + '/app/vendor.less'
+    '!' + paths.src + '/app/index.less'
   ], { read: false });
 
   var injectOptions = {
@@ -36,8 +35,7 @@ gulp.task('styles', function () {
   var indexFilter = $.filter('index.less');
 
   return gulp.src([
-    paths.src + '/app/index.less',
-    paths.src + '/app/vendor.less'
+    paths.src + '/app/index.less'
   ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))
