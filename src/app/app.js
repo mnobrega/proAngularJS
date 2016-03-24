@@ -9,10 +9,20 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
             url: "/index",
             templateUrl: "components/common/content.html"
         })
+        .state('dashboards_top', {
+            abstract: true,
+            url: "/dashboards_top",
+            templateUrl: "components/common/content_top_navigation.html",
+        })
         .state('index.main', {
             url: "/main",
             templateUrl: "app/main/main.html",
             data: { pageTitle: 'Example view' }
+        })
+        .state('dashboards_top.dashboard_4', {
+            url: "/dashboard_4",
+            templateUrl: "app/dashboard/dashboard_4.html",
+            data: { pageTitle: 'Dashboard' }
         })
         .state('index.minor', {
             url: "/minor",
