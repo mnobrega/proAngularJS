@@ -1,8 +1,6 @@
 {
-  "name": "proangularjs",
-  "version": "1.0.0",
-  "description": "Angular Sandbox",
-  "main": "index.js",
+  "name": "inspinia",
+  "version": "2.3.0",
   "dependencies": {
     "connect": "^3.4.1",
     "serve-static": "^1.10.2"
@@ -45,17 +43,7 @@
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mnobrega/proAngularJS.git"
-  },
-  "author": "Marcio Nobrega",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mnobrega/proAngularJS/issues"
-  },
-  "homepage": "https://github.com/mnobrega/proAngularJS#readme"
+  "engines": {
+    "node": ">=0.10.0"
+  }
 }

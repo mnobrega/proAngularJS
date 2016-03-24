@@ -12,7 +12,7 @@ gulp.task('styles', function () {
     paths: [
       'bower_components',
       paths.src + '/app',
-      paths.src + '/shared'
+      paths.src + '/components'
     ]
   };
 
@@ -43,10 +43,11 @@ gulp.task('styles', function () {
     .pipe($.inject(injectFiles, injectOptions))
     .pipe(indexFilter.restore())
     .pipe($.less())
-    .pipe($.autoprefixer())
-      .on('error', function handleError(err) {
-        console.error(err.toString());
-        this.emit('end');
-      })
+
+  .pipe($.autoprefixer())
+    .on('error', function handleError(err) {
+      console.error(err.toString());
+      this.emit('end');
+    })
     .pipe(gulp.dest(paths.tmp + '/serve/app/'));
 });
