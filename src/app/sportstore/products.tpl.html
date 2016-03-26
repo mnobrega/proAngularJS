@@ -1,0 +1,16 @@
+<div class="panel panel-default row" ng-controller="ProductsCtrl as products">
+    <div class="col-xs-3">
+        Categories here
+    </div>
+    <div class="col-xs-8">
+        <div class="well" ng-repeat="item in data.products">
+            <h3>
+                <strong>{{item.name}}</strong>
+                <span class="pull-right label label-primary">
+                    {{item.price | currency}}
+                </span>
+            </h3>
+            <span class="lead">{{item.description}}</span>
+        </div>
+    </div>
+</div>
