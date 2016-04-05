@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap','gettext' ])
+angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap','gettext','customFilters' ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
         .state('index', {
             abstract: true,
             url: "/index",
-            templateUrl: "components/common/content.html"
+            templateUrl: "app/common/content.html"
         })
         .state('dashboards_top', {
             abstract: true,
             url: "/dashboards_top",
-            templateUrl: "components/common/content_top_navigation.html",
+            templateUrl: "app/common/content_top_navigation.html",
         })
         .state('index.main', {
             url: "/main",
