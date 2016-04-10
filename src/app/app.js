@@ -26,8 +26,15 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         })
         .state('index.products',{
             url: "/products",
-            templateUrl: "app/sportstore/products.tpl.html",
-            data: { pageTitle: 'Sportstore Products'}
+            templateUrl: "app/sportstore/products.tpl.html"
+        })
+        .state('index.products.list',{
+            url: "/list",
+            templateUrl: "app/sportstore/productsList.tpl.html"
+        })
+        .state('index.products.checkout',{
+            url: "/checkout",
+            templateUrl: "app/sportstore/productsCheckout.tpl.html"
         })
         .state('index.minor', {
             url: "/minor",

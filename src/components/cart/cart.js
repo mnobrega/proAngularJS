@@ -7,7 +7,7 @@ angular.module("cart",[])
                 var addedToExistingItem = false;
                 for (var i=0; i < cartData.length; i++) {
                     if (cartData[i].id == id) {
-                        cardData[i].count++;
+                        cartData[i].count++;
                         addedToExistingItem = true;
                         break;
                     }

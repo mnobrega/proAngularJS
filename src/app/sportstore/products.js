@@ -28,6 +28,7 @@ angular.module("inspinia")
 
         $scope.selectedPage = 1;
         $scope.pageSize = productListPageCount;
+        $scope.checkoutUrl = '#/index/products/checkout';
 
         $scope.selectCategory = function(newCategory){
             selectedCategory = newCategory;
