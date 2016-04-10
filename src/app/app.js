@@ -24,11 +24,18 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
             templateUrl: "app/dashboard/dashboard_4.html",
             data: { pageTitle: 'Dashboard' }
         })
+
         .state('index.products',{
             url: "/products",
             templateUrl: "app/sportstore/products.tpl.html",
             data: { pageTitle: 'Sportstore Products'}
         })
+        .state('index.products.list',{
+            url: "/list",
+            templateUrl: "app/sportstore/products.list.tpl.html",
+            data : {}
+        })
+
         .state('index.minor', {
             url: "/minor",
             templateUrl: "app/minor/minor.html",
