@@ -1,11 +1,13 @@
 <div ng-controller="ProductsCtrl as products">
     <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">Products</a>
+        <cart-summary />
     </div>
+
     <div class="alert alert-danger" ng-show="data.error">
         Error ({{data.error.status}}). The product data was not loeaded.
         <a ui-sref="index.products" class="alert-link">Click here to try again</a>
     </div>
 
-    <div ui-view></div>
+    <div ng-include="'app/sportstore/products.list.tpl.html'"></div>
 </div>

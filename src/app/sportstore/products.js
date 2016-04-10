@@ -1,5 +1,8 @@
 angular.module("inspinia")
     .constant("dataUrl","http://localhost:2403/products")
+    .constant("productListActiveClass","btn-primary")
+    .constant("productListInactiveClass","btn-default")
+    .constant("productListPageCount",3)
     .controller("ProductsCtrl", function($scope, $http, dataUrl){
         //$scope.data = {
         //    products: [
@@ -20,10 +23,7 @@ angular.module("inspinia")
                 $scope.data.error = error;
             });
     })
-    .constant("productListActiveClass","btn-primary")
-    .constant("productListInactiveClass","btn-default")
-    .constant("productListPageCount",3)
-    .controller("ProductsListCtrl", function($scope, $filter, productListActiveClass, productListInactiveClass, productListPageCount) {
+    .controller("ProductsListCtrl", function($scope, $filter, productListActiveClass, productListInactiveClass, productListPageCount, cart) {
         var selectedCategory = null;
 
         $scope.selectedPage = 1;
@@ -48,5 +48,9 @@ angular.module("inspinia")
 
         $scope.getPageClass = function(page) {
             return $scope.selectedPage == page? productListActiveClass:productListInactiveClass;
+        }
+
+        $scope.addProductToCart = function(product) {
+            cart.addProduct(product.id, product.name, product.price);
         }
     });
