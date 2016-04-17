@@ -35,8 +35,8 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
             url: "/placeorder",
             templateUrl:"app/sportstore/productsPlaceOrder.tpl.html"
         })
-        .state('index.products.thankyou',{
-            url: "/thankyou",
+        .state('index.products.complete',{
+            url: "/complete",
             templateUrl:"app/sportstore/productsThankYou.tpl.html"
         });
 

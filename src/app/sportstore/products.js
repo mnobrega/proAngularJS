@@ -1,17 +1,10 @@
 angular.module("inspinia")
     .constant("dataUrl","http://localhost:2403/products")
+    .constant("orderUrl","http://localhost:2403/orders")
     .constant("productListActiveClass","btn-primary")
     .constant("productListInactiveClass","btn-default")
     .constant("productListPageCount",3)
-    .controller("ProductsCtrl", function($scope, $http, dataUrl){
-        //$scope.data = {
-        //    products: [
-        //        {name:"Product #1",description:"A Product", category:"Category #1", price:210},
-        //        {name:"Product #2",description:"A Product", category:"Category #1", price:220},
-        //        {name:"Product #3",description:"A Product", category:"Category #3", price:230},
-        //        {name:"Product #4",description:"A Product", category:"Category #2", price:250}
-        //    ]
-        //}
+    .controller("ProductsCtrl", function($scope, $http, $location, dataUrl, orderUrl, cart){
 
         $scope.data = {};
 
@@ -22,6 +15,22 @@ angular.module("inspinia")
             .error(function(error) {
                 $scope.data.error = error;
             });
+
+        $scope.sendOrder = function(shippingDetails) {
+            var order = angular.copy(shippingDetails);
+            order.products = cart.getProducts();
+            $http.post(orderUrl,order)
+                .success(function(data) {
+                    $scope.data.orderId = data.id;
+                    cart.getProducts().length = 0;
+                })
+                .error(function(error) {
+                    $scope.data.ordererror =error;
+                })
+                .finally(function(){
+                    $location.path("#/index/products/complete");
+                });
+        };
     })
     .controller("ProductsListCtrl", function($scope, $filter, productListActiveClass, productListInactiveClass, productListPageCount, cart) {
         var selectedCategory = null;
