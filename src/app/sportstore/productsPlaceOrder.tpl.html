@@ -40,7 +40,7 @@
         <div class="form-group">
             <label>Zip</label>
             <input name="zip" class="form-control" ng-model="data.shipping.zip" required />
-            <span class="productsFormError" ng-show="shippingForm.state.$error.required">
+            <span class="productsFormError" ng-show="shippingForm.zip.$error.required">
                 Please enter a zip code
             </span>
         </div>
@@ -48,7 +48,7 @@
         <div class="form-group">
             <label>Country</label>
             <input name="country" class="form-control" ng-model="data.shipping.country" required />
-            <span class="productsFormError" ng-show="shippingForm.state.$error.required">
+            <span class="productsFormError" ng-show="shippingForm.country.$error.required">
                 Please enter a country
             </span>
         </div>

@@ -25,10 +25,10 @@ angular.module("inspinia")
                     cart.getProducts().length = 0;
                 })
                 .error(function(error) {
-                    $scope.data.ordererror =error;
+                    $scope.data.orderError =error;
                 })
                 .finally(function(){
-                    $location.path("#/index/products/complete");
+                    $location.path("/index/products/complete");
                 });
         };
     })

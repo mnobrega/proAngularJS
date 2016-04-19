@@ -38,8 +38,12 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         .state('index.products.complete',{
             url: "/complete",
             templateUrl:"app/sportstore/productsThankYou.tpl.html"
+        })
+        .state('login',{
+            url: "/login",
+            templateUrl:"app/sportstore/adminLogin.tpl.html"
         });
 
-    $urlRouterProvider.otherwise('/index/main');
+    $urlRouterProvider.otherwise('/login');
   })
 ;
