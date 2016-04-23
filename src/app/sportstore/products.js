@@ -8,7 +8,7 @@ angular.module("inspinia")
 
         $scope.data = {};
 
-        $http.get(dataUrl)
+        $http.get(dataUrl,{withCredencitlas:true})
             .success(function(data){
                 $scope.data.products = data;
             })

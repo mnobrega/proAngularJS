@@ -1,0 +1,9 @@
+<div class="panel panel-default row">
+    <div class="col-xs-3 panel-body">
+        <a class="btn btn-block btn-primary" ui-sref="index.admin.products">Products</a>
+        <a class="btn btn-block btn-primary" ui-sref="index.admin.orders">Orders</a>
+    </div>
+    <div class="col-xs-8 panel-body" ui-view>
+        <ng-include src="'app/sportstoreAdmin/adminProducts.tpl.html'"></ng-include>
+    </div>
+</div>

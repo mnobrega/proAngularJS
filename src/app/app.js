@@ -39,9 +39,21 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
             url: "/complete",
             templateUrl:"app/sportstore/productsThankYou.tpl.html"
         })
+        .state('index.admin',{
+            url: "/admin",
+            templateUrl:"app/sportstoreAdmin/adminMain.tpl.html"
+        })
+        .state('index.admin.products',{
+            url: "/products",
+            templateUrl:"app/sportstoreAdmin/adminProducts.tpl.html"
+        })
+        .state('index.admin.orders',{
+            urk: "/orders",
+            templateUrl:"app/sportstoreAdmin/adminOrders.tpl.html"
+        })
         .state('login',{
             url: "/login",
-            templateUrl:"app/sportstore/adminLogin.tpl.html"
+            templateUrl:"app/sportstoreAdmin/adminLogin.tpl.html"
         });
 
     $urlRouterProvider.otherwise('/login');
