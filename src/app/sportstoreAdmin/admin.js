@@ -51,7 +51,7 @@ angular.module("inspinia")
         $scope.createProduct = function(product) {
             new $scope.productsResource(product).$save().then(function(newProduct) {
                 $scope.products.push(newProduct);
-                $scope.editProduct = null;
+                $scope.editedProduct = null;
             });
         };
 
@@ -60,8 +60,8 @@ angular.module("inspinia")
         };
 
         $scope.updateProduct = function(product) {
-            product.save();
-            $scope.editProduct = null;
+            product.$save();
+            $scope.editedProduct = null;
         };
 
         $scope.deleteProduct = function(product) {
@@ -71,13 +71,12 @@ angular.module("inspinia")
         };
 
         $scope.startEdit = function(product) {
-
+            $scope.editedProduct = product;
         };
 
         $scope.cancelEdit = function() {
-
+            $scope.editedProduct = null;
         };
 
         $scope.listProducts();
-
     });
