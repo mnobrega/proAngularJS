@@ -1,0 +1,9 @@
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="page-header">
+            <h3>AngularJS App</h3>
+        </div>
+        <h4 ng-controller="dayCtrl" highlight="Sunday">Today is {{day || "(unknown)" | dayName}}</h4>
+        <h4 ng-controller="tomorrowCtrl">Tomorrow is {{day || "(unknown)" | dayName}}</h4>
+    </div>
+</div>

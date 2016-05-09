@@ -48,8 +48,12 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
             templateUrl:"app/sportstoreAdmin/adminProducts.tpl.html"
         })
         .state('index.admin.orders',{
-            urk: "/orders",
+            url: "/orders",
             templateUrl:"app/sportstoreAdmin/adminOrders.tpl.html"
+        })
+        .state('index.cap9',{
+            url: "/cap9",
+            templateUrl:"app/cap9/exampleCap9.tpl.html"
         })
         .state('login',{
             url: "/login",

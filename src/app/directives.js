@@ -37,6 +37,12 @@ angular.module('inspinia')
                 };
             }
         };
+    })
+    .directive("highlight",function() {
+        return function (scope, element, attrs) {
+            if (scope.day == attrs["highlight"]) {
+                element.css("color", "red");
+            }}
     });
 
 
