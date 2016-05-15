@@ -38,9 +38,12 @@ angular.module('inspinia')
             }
         };
     })
-    .directive("highlight",function() {
+    .directive("highlight",function($filter) {
+
+        var dayFilter = $filter("dayName");
+
         return function (scope, element, attrs) {
-            if (scope.day == attrs["highlight"]) {
+            if (dayFilter(scope.day) == attrs["highlight"]) {
                 element.css("color", "red");
             }}
     });
