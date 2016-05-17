@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap','gettext','customFilters','cart','cap9'])
+angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap','gettext','customFilters','cart','cap9','cap10'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
@@ -54,6 +54,10 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         .state('index.cap9',{
             url: "/cap9",
             templateUrl:"app/cap9/exampleCap9.tpl.html"
+        })
+        .state("index.cap10",{
+            url: "/cap10",
+            templateUrl:"app/cap10/cap10.tpl.html"
         })
         .state('login',{
             url: "/login",

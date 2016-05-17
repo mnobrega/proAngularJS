@@ -1,0 +1,36 @@
+<div class="wrapper wrapper-content animated" ng-controller="defaultCtrl">
+    <div class="row">
+        <div class="page-header">
+            <h3>To Do List</h3>
+        </div>
+        <h3>Single Binding</h3>
+        <div>There are {{todos.length}} items</div>
+        <div>
+            There are <span ng-bind="todos.length"></span> items
+        </div>
+        <div ng-bind-template="First: {{todos[0].action}}. Second: {{todos[1].action}}"></div>
+        <div ng-non-bindable>
+            AngularJS users {{ and }} charaters for templates.
+        </div>
+
+        <br />
+        <h3>Two-Way Binding</h3>
+
+        <div class="">
+            <div>The first item is: {{todos[0].action}}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstItem">Set First Item:</label>
+            <input name="firstItem" class="form-control" ng-model="todos[0].action" />
+        </div>
+
+        <div class="form-group">
+            <label for="secondItem">Set second Item:</label>
+            <select name="secondItem" class="form-control" ng-model="todos[1].action">
+                <option value="''">Select One</option>
+                <option ng-repeat="todo in todos" value="{{todo.action}}">{{todo.action}}</option>
+            </select>
+        </div>
+    </div>
+</div>
