@@ -32,5 +32,106 @@
                 <option ng-repeat="todo in todos" value="{{todo.action}}">{{todo.action}}</option>
             </select>
         </div>
+
+        <br />
+        <h3>Template Directives</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in todos" ng-class="$odd?'odd':'even'">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.complete}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr ng-repeat="item in todos" ng-class="$odd?'odd':'even'">
+                    <td>{{$index+1}}</tD>
+                    <td ng-repeat="prop in item">{{prop}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr ng-repeat="item in todos" ng-class="$odd?'odd':'even'">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td><span ng-if="$first || $last">{{item.complete}}</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr ng-repeat-start="item in todos">
+                    <td>This is item {{$index}}</td>
+                </tr>
+                <tr>
+                    <td>The action is : {{item.action}}</td>
+                </tr>
+                <tr ng-repeat-end>
+                    <td>Item {{$index}} is {{$item.complete?'':"not "}} complete</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <h3>Partial Views</h3>
+
+        <ng-include src="'app/cap10/cap10.todosList.tpl.html'"></ng-include>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="showList">
+                Use the list view
+            </label>
+        </div>
+        <ng-include src="viewFile()"></ng-include>
+
+        <ng-include src="viewFile()" onload="reportChange()"></ng-include>
+
+        <br />
+        <h3>ng-switch</h3>
+
+        <div class="radio" ng-repeat="button in radioOptions">
+            <label ng-cloak>
+                <input type="radio" ng-model="data.mode" value="{{button}}" ng-checked="$first" />
+                {{button}}
+            </label>
+        </div>
+
+        <div ng-switch on="data.mode" ng-cloak>
+            <div ng-switch-when="Table">
+                <table class="table">
+                    <thead>
+                        <th>#</th>
+                        <th>Action</th>
+                        <th>Done</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in todos" ng-class="$odd?'odd':'even'">
+                            <td>{{$item+1}}</td>
+                            <td ng-repeat="prop in item">{{prop}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-switch-when="List">
+                <ol>
+                    <li ng-repeat="item in todos">
+                        {{item.action}}<span ng-if="item.complete"> (Done)</span>
+                    </li>
+                </ol>
+            </div>
+            <div ng-switch-default>
+                Select another option to display layout
+            </div>
+        </div>
+
     </div>
 </div>
