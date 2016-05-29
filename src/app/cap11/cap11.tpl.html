@@ -1,0 +1,21 @@
+<div class="wrapper wrapper-content animated" ng-app="cap11">
+    <div class="row" ng-controller="getCap11BaseCtrl">
+        <h3 class="panel-header">Todo List</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repear="item in todos">
+                    <td>{{$index + 1}}</td>
+                    <td ng-repeat="prop in item">{{prop}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

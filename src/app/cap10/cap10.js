@@ -1,7 +1,7 @@
 angular.module("cap10",["cap10.controllers"]);
 
 angular.module("cap10.controllers",[])
-     .controller("defaultCtrl", function($scope) {
+     .controller("getCap10BaseCtrl", function($scope) {
 
          $scope.showList = false;
          $scope.data = {};
