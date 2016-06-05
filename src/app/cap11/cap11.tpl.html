@@ -1,8 +1,63 @@
 <div class="wrapper wrapper-content animated" ng-app="cap11">
     <div class="row" ng-controller="getCap11BaseCtrl">
-        <h3 class="panel-header">Todo List</h3>
 
-        <table class="table">
+        <h3 class="panel-header">Managing Special Attributes</h3>
+        <div class="checkbox well">
+            <label>
+                <input type="checkbox" ng-model="dataValue">
+                Set the Data Value
+            </label>
+            <label>
+                <input type="text" ng-model="dataText" />
+            </label>
+        </div>
+        <button class="btn btn-success" ng-disabled="dataValue">My Button</button>
+        <input type="checkbox" ng-checked="dataValue" />Checkbox
+        <input type="text" ng-readonly="dataValue" value="Test" />
+        <select>
+            <option value="1" ng-selected="dataValue">Option 1</option>
+            <option value="2" ng-selected="!dataValue">Option 2</option>
+        </select>
+        <a ng-href="dataText">Link</a>
+
+        <br />
+        <br />
+
+        <h3 class="panel-header">Event Directive</h3>
+        <div class="well" tap="message = 'Tapped!'">
+            {{message}}
+        </div>
+
+        <h3 class="panel-header">Todos List</h3>
+
+        <div class="checkbox well">
+            <label>
+                <input type="checkbox" ng-model="todos[2].complete" />
+                Item 3 is complete
+            </label>
+        </div>
+
+        <div class="wrapper row">
+            <div class="col-xs-6" ng-repeat="(key,val) in settings">
+                <h4>{{key}}</h4>
+                <div class="radio" ng-repeat="button in buttonNames">
+                    <label>
+                        <input type="radio" ng-model="settings[key]" value="{{button}}">
+                        {{button}}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="well">
+            <span ng-repeat="button in buttonNames">
+                <button class="btn btn-info" ng-click="data.rowColor = button">
+                    {{button}}
+                </button>
+            </span>
+        </div>
+
+        <table id="cap11Table" class="table table-striped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -11,9 +66,61 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repear="item in todos">
+                <tr><td colspan="3">Handling Events</td></tr>
+                <tr ng-repeat="item in todos" ng-class="data.rowColor" ng-mouseenter="handleEvent($event)" ng-mouseleave="handleEvent($event)">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td ng-class="data.columnColor">{{item.complete}}</td>
+                </tr>
+
+                <tr><td colspan="3">With Colors with ng-class-even</td></tr>
+                <tr ng-repeat="item in todos" ng-class-even="settings.Rows" ng-class-odd="settings.Columns">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.complete}}</td>
+                </tr>
+
+                <tr><td colspan="3">With Colors</td></tr>
+                <tr ng-repeat="item in todos" ng-class="settings.Rows">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.action}}</td>
+                    <td ng-style="{'background-color':settings.Columns}">
+                        {{item.complete}}
+                    </td>
+                </tr>
+
+                <tr><td colspan="3">Translated to String with ng-hide, ng-show</td></tr>
+                <tr ng-repeat="item in todos">
                     <td>{{$index + 1}}</td>
-                    <td ng-repeat="prop in item">{{prop}}</td>
+                    <td>{{item.action}}</td>
+                    <td>
+                        <span ng-hide="item.complete">(Incomplete)</span>
+                        <span ng-show="item.complete">(Done)</span>
+                    </td>
+                </tr>
+
+                <tr><td colspan="3">Translated to String with ng-if</td></tr>
+                <tr ng-repeat="item in todos">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>
+                        <span ng-if="!item.complete">(Incomplete)</span>
+                        <span ng-if="item.complete">(Done)</span>
+                    </td>
+                </tr>
+
+                <tr><td colspan="3">With ng-if</td></tr>
+                <tr ng-repeat="item in todos" ng-if="!item.complete">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.complete}}</td>
+                </tr>
+
+                <tr><td colspan="3">With filter</td></tr>
+                <tr ng-repeat="item in todos | filter:{complete:'false'}">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>{{item.complete}}</td>
                 </tr>
             </tbody>
         </table>

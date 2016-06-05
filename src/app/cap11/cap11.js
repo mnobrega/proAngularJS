@@ -10,5 +10,35 @@ angular.module("cap11.controllers",[])
             {action: "Call family",complete:false}
         ];
 
-        console.log($scope.todos);
+        $scope.buttonNames = ["Red","Green","Blue"];
+
+        $scope.settings = {
+            Rows: "Red",
+            Columns: "Green"
+        };
+
+        $scope.data = {
+            rowColor: "Blue",
+            columnColor: "Green"
+        };
+
+        $scope.handleEvent = function(e) {
+            //console.log("Event type: " + e.type);
+            $scope.data.columnColor = (e.type == "mouseenter"?"Green":"Blue");
+            //console.log($scope.data.columnColor);
+        }
+
+        $scope.message = "Tap me!";
+
+        $scope.dataValue = false;
+        $scope.dataText = "";
+    })
+    .directive("tap",function() {
+        return function(scope, elem, attrs) {
+            console.log(elem);
+            elem.on("touchstart touchend", function() {
+                console.log(hello);
+                scope.$apply(attrs["tap"]);
+            })
+        }
     });
