@@ -1,4 +1,4 @@
-angular.module("cap11",["cap11.controllers"]);
+angular.module("cap11",["cap11.controllers","cap11.directives"]);
 
 angular.module("cap11.controllers",[])
     .controller("getCap11BaseCtrl", function($scope) {
@@ -32,7 +32,9 @@ angular.module("cap11.controllers",[])
 
         $scope.dataValue = false;
         $scope.dataText = "";
-    })
+    });
+
+angular.module("cap11.directives",[])
     .directive("tap",function() {
         return function(scope, elem, attrs) {
             console.log(elem);
