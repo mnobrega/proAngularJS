@@ -1,7 +1,7 @@
 <div id="chap13Div" class="wrapper wrapper-content animated" ng-app="cap13">
 
     <h3>Integrate with other Frameworks</h3>
-    <div id="jQueryInt" class="well" ng-controller="jQueryIntCtrl">
+    <div id="angularRegion" class="well" ng-controller="jQueryIntCtrl">
         <h4>AngularJS</h4>
         <div class="checkbox">
             <label>
@@ -17,7 +17,7 @@
     <script>
         $(document).ready(function(){
             $("#jqui button").button().click(function(e) {
-                alert("jQuery UI Button was clicked");
+                angular.element(angularRegion).scope().$apply('handleClick()');
             });
         });
     </script>

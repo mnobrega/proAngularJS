@@ -8,6 +8,12 @@ angular.module("cap13.controllers",["cap13.services"])
         $scope.handleClick = function() {
             $scope.clickCounter++;
         }
+
+        $scope.$watch('buttonEnabled', function(newValue) {
+           $('#jqui button').button({
+                disabled: !newValue
+           });
+        });
     })
     .controller("scopelessCtrl", function() {
         this.dataValue = "Hello, Adam";
