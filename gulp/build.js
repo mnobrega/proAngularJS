@@ -68,8 +68,13 @@ gulp.task('html', ['inject', 'partials'], function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src(paths.src + '/assets/images/**/*')
-    .pipe(gulp.dest(paths.dist + '/assets/images/'));
+    var imagesSrc = gulp.src([
+        paths.src + '/assets/images/**/*',
+        'bower_components' + '/jquery-ui/themes/sunny/images/*.png'
+    ]);
+
+  return imagesSrc
+      .pipe(gulp.dest(paths.dist + '/assets/images/'));
 });
 
 gulp.task('fonts', function () {

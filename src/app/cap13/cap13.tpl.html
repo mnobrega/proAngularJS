@@ -1,72 +1,106 @@
 <div id="chap13Div" class="wrapper wrapper-content animated" ng-app="cap13">
 
+    <h3>Integrate with other Frameworks</h3>
+    <div id="jQueryInt" class="well" ng-controller="jQueryIntCtrl">
+        <h4>AngularJS</h4>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="buttonEnabled"> Enable Button
+            </label>
+        </div>
+        Click counter: {{clickCounter}}
+    </div>
+    <div id="jqui" class="well">
+        <h4>jQuery UI</h4>
+        <button>Click me!</button>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#jqui button").button().click(function(e) {
+                alert("jQuery UI Button was clicked");
+            });
+        });
+    </script>
+
+    <h3>Scopeless Controllers</h3>
+    <div id="scopeLess" class="well" ng-controller="scopelessCtrl as ctrl">
+            <h4>Scopeless Controller</h4>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="ctrl.reverseText()">Reverse</button>
+                </span>
+                <input class="form-control" ng-model="ctrl.dataValue">
+            </div>
+        </div>
+    </div>
+
+    <h3>Controller Inheritance</h3>
+    <div id="topLevelDiv" class="row" ng-controller="topLevelCtrl">
+        <div class="well">
+            <h4>Top Level Controller</h4>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"
+                            ng-click="reverseText()">Reverse</button>
+                    <button class="btn btn-default" type="button"
+                            ng-click="changeCase()">Case</button>
+                </span>
+                <input class="form-control" ng-model="data.dataValue">
+            </div>
+        </div>
+        <div class="well" ng-controller="firstChildCtrl">
+            <h4>First Child Controller</h4>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"
+                            ng-click="reverseText()">Reverse</button>
+                    <button class="btn btn-default" type="button"
+                            ng-click="changeCase()">Case</button>
+                </span>
+                <input class="form-control" ng-model="data.dataValue">
+            </div>
+        </div>
+        <div class="well" ng-controller="secondChildCtrl">
+            <h4>Second Child Controller</h4>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"
+                            ng-click="reverseText()">Reverse</button>
+                    <button class="btn btn-default" type="button"
+                            ng-click="changeCase()">Case</button>
+                    <button class="btn btn-default" type="button"
+                            ng-click="shiftFour()">Shift</button>
+                </span>
+                <input class="form-control" ng-model="data.dataValue">
+            </div>
+        </div>
+    </div>
+
+    <h3>Reusing Controllers</h3>
+    <div class="well" ng-controller="reusedController">
+        <h4>Billing Zip Code 2</h4>
+        <div class="form-group">
+            <input class="form-control" ng-model="billingZip2">
+        </div>
+        <button class="btn btn-primary" ng-click="setAddress('billingZip2',billingZip2)">
+            Save Billing
+        </button>
+    </div>
+    <div class="well" ng-controller="reusedController">
+        <h4>Shipping Zip Code 2</h4>
+        <div class="form-group">
+            <input class="form-control" ng-model="shippingZip2">
+        </div>
+        <button class="btn btn-primary" ng-click="copyAddress()">
+            Use Billing
+        </button>
+        <button class="btn btn-primary" ng-click="setAddress('shippingZip2',shippingZip2)">
+            Save Shipping
+        </button>
+    </div>
+
+    <h3>Organizing Controllers</h3>
     <div class="row" ng-controller="secondCtrl">
-        <h3>Controller Inheritance</h3>
-        <div id="topLevelDiv" class="row" ng-controller="topLevelCtrl">
-            <div class="well">
-                <h4>Top Level Controller</h4>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"
-                                ng-click="reverseText()">Reverse</button>
-                        <button class="btn btn-default" type="button"
-                                ng-click="changeCase()">Case</button>
-                    </span>
-                    <input class="form-control" ng-model="data.dataValue">
-                </div>
-            </div>
-            <div class="well" ng-controller="firstChildCtrl">
-                <h4>First Child Controller</h4>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"
-                                ng-click="reverseText()">Reverse</button>
-                        <button class="btn btn-default" type="button"
-                                ng-click="changeCase()">Case</button>
-                    </span>
-                    <input class="form-control" ng-model="data.dataValue">
-                </div>
-            </div>
-            <div class="well" ng-controller="secondChildCtrl">
-                <h4>Second Child Controller</h4>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"
-                                ng-click="reverseText()">Reverse</button>
-                        <button class="btn btn-default" type="button"
-                                ng-click="changeCase()">Case</button>
-                        <button class="btn btn-default" type="button"
-                                ng-click="shiftFour()">Shift</button>
-                    </span>
-                    <input class="form-control" ng-model="data.dataValue">
-                </div>
-            </div>
-        </div>
-
-        <h3>Reusing Controllers</h3>
-        <div class="well" ng-controller="reusedController">
-            <h4>Billing Zip Code 2</h4>
-            <div class="form-group">
-                <input class="form-control" ng-model="billingZip2">
-            </div>
-            <button class="btn btn-primary" ng-click="setAddress('billingZip2',billingZip2)">
-                Save Billing
-            </button>
-        </div>
-        <div class="well" ng-controller="reusedController">
-            <h4>Shipping Zip Code 2</h4>
-            <div class="form-group">
-                <input class="form-control" ng-model="shippingZip2">
-            </div>
-            <button class="btn btn-primary" ng-click="copyAddress()">
-                Use Billing
-            </button>
-            <button class="btn btn-primary" ng-click="setAddress('shippingZip2',shippingZip2)">
-                Save Shipping
-            </button>
-        </div>
-
-        <h3>Organizing Controllers</h3>
         <div class="well">
             <h4>Billing Zip Code</h4>
             <div class="form-group">

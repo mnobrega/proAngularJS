@@ -1,6 +1,21 @@
 angular.module("cap13",["cap13.controllers"]);
 
 angular.module("cap13.controllers",["cap13.services"])
+    .controller("jQueryIntCtrl", function($scope) {
+        $scope.buttonEnabled = true;
+        $scope.clickCounter = 0;
+
+        $scope.handleClick = function() {
+            $scope.clickCounter++;
+        }
+    })
+    .controller("scopelessCtrl", function() {
+        this.dataValue = "Hello, Adam";
+
+        this.reverseText = function() {
+            this.dataValue = this.dataValue.split("").reverse().join("");
+        }
+    })
     .controller("topLevelCtrl", function($scope) {
 
         $scope.data = {
