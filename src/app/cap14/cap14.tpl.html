@@ -1,0 +1,41 @@
+<div id="chap14Div" class="wrapper wrapper-content animated" ng-app="cap14">
+
+
+
+    <h3>Filtering Single Data Values</h3>
+    <div class="well" ng-controller="firstController">
+        <h4>Filtering Collections</h4>
+        <div class="well">
+            <div class="row">
+                Limit: <select ng-model="limitVal" ng-options="item for item in limitRange"></select>
+            </div>
+        </div>
+        <h4>
+            Products
+            <span class="label label-primary">{{products.length}}</span>
+        </h4>
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <td>Category</td>
+                    <td>Expiry</td>
+                    <td class="text-right">Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in products | limitTo:limitVal">
+                    <td>{{p.name | uppercase}}</td>
+                    <td>{{p.category | lowercase}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4">JSON Filter</td></tr>
+                <tr ng-repeat="p in products">
+                    <td colspan="4">{{p | json}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
