@@ -2,6 +2,7 @@ angular.module("cap14",["cap14.controllers"]);
 
 angular.module("cap14.controllers",[])
     .controller("firstController",function($scope) {
+
         $scope.products = [
             {name:'Apples', category:'Fruit', price:1.20, expiry:10},
             {name:'Bananas', category:'Fruit', price:2.42, expiry:7},
@@ -16,16 +17,24 @@ angular.module("cap14.controllers",[])
             {name:'Whiskey', category:'Drinks', price:45.99, expiry:365}
         ];
 
-        $scope.getExpiryDate = function(days) {
-            var now = new Date();
-            return now.setDate(now.getDate() + days);
-        }
+        //custom filter
+        $scope.myCustomSorter = function(item) {
+            return item.expiry < 5 ? 0 : item.price;
+        };
+
+        //filtering category
+        $scope.selectedCategory = 'Fruit';
+        $scope.categories = ['Fruit','Fish','Drinks'];
 
         //filtering collections
         $scope.limitVal = "5";
-        $scope.limitRange = ["5","10","15"];
-        for (var i = (0-$scope.products.length);
-            i <= $scope.products.length; i++) {
-            $scope.limitRange.push[i.toString()];
+        $scope.limitRange = [];
+        for (var i = (0-$scope.products.length); i <= $scope.products.length; i++) {
+            $scope.limitRange.push(i.toString());
         }
+
+        $scope.getExpiryDate = function(days) {
+            var now = new Date();
+            return now.setDate(now.getDate() + days);
+        };
     });

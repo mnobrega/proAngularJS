@@ -2,16 +2,24 @@
 
 
 
-    <h3>Filtering Single Data Values</h3>
+    <h3>Filters</h3>
     <div class="well" ng-controller="firstController">
+        <h4>Selecting Items</h4>
+        <div class="well">
+            <div class="row">
+                Field: <select id="selectedCategory" ng-model="selectedCategory" ng-options="item for item in categories"></select>
+            </div>
+        </div>
+
         <h4>Filtering Collections</h4>
         <div class="well">
             <div class="row">
-                Limit: <select ng-model="limitVal" ng-options="item for item in limitRange"></select>
+                Limit: <select id="limitVal" ng-model="limitVal" ng-options="item for item in limitRange"></select>
             </div>
         </div>
+
         <h4>
-            Products
+            Filtering Single Element
             <span class="label label-primary">{{products.length}}</span>
         </h4>
         <table class="table table-striped table-bordered table-condensed">
@@ -24,13 +32,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="p in products | limitTo:limitVal">
+                <tr ng-repeat="p in products | filter:selectedCategory | limitTo:limitVal | orderBy:'-price'">
                     <td>{{p.name | uppercase}}</td>
                     <td>{{p.category | lowercase}}</td>
                     <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
                     <td class="text-right">{{p.price | currency}}</td>
                 </tr>
-                <tr><td colspan="4">JSON Filter</td></tr>
+                <tr><td colspan="4"><b>Building On Existing Filters</b></td></tr>
+                <tr ng-repeat="p in products | take:2:5">
+                    <td>{{p.name}}</td>
+                    <td>{{p.category}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4"><b>Collection Filter</b></td></tr>
+                <tr ng-repeat="p in products | skip:3 | limitTo:5">
+                    <td>{{p.name}}</td>
+                    <td>{{p.category}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4"><b>Custom Filter</b></td></tr>
+                <tr ng-repeat="p in products | orderBy:'price'">
+                    <td>{{p.name | labelCase}}</td>
+                    <td>{{p.category | labelCase:true}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4"><b>Multiple Predicates</b></td></tr>
+                <tr ng-repeat="p in products | orderBy:[myCustomSorter,'-price'] | limitTo:limitVal">
+                    <td>{{p.name | uppercase}}</td>
+                    <td>{{p.category | lowercase}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4"><b>Custom Sorter</b></td></tr>
+                <tr ng-repeat="p in products | orderBy:myCustomSorter">
+                    <td>{{p.name | uppercase}}</td>
+                    <td>{{p.category | lowercase}}</td>
+                    <td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+                    <td class="text-right">{{p.price | currency}}</td>
+                </tr>
+                <tr><td colspan="4"><b>JSON Filter</b></td></tr>
                 <tr ng-repeat="p in products">
                     <td colspan="4">{{p | json}}</td>
                 </tr>
