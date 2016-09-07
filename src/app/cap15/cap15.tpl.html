@@ -1,0 +1,18 @@
+<div id="chap15Div" class="wrapper wrapper-content animated" ng-app="cap15">
+    <h3>Creating a Custom Directive</h3>
+    <div class="well" ng-controller="cap15Ctrl1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Products</h3>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-primary" ng-click="incrementPrices()">
+                    Change Prices
+                </button>
+            </div>
+            <div class="panel-body">
+                <div unordered-list="products" list-property="price | currency"></div>
+            </div>
+        </div>
+    </div>
+</div>

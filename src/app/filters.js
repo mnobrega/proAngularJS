@@ -5,7 +5,7 @@ angular.module("inspinia")
             return angular.isNumber(input)?dayNames[input]:input;
         }
     })
-    .filter ("take", function() {
+    .filter ("take", function($filter) {
         return function (data, skipCount, takeCount) {
             var skippedData = $filter("skip")(data, skipCount);
             return $filter("limitTo")(skippedData, takeCount);
