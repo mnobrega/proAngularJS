@@ -1,6 +1,9 @@
 angular.module("cap15",["cap15.controllers"]);
 
 angular.module("cap15.controllers",[])
+    .controller("cap15Ctrl2", function($scope) {
+        $scope.names = ["Apples","Bananas","Oranges"];
+    })
     .controller("cap15Ctrl1", function($scope){
         $scope.products = [
             {name:"Apples",category:"Fruit",price:1.20,expiry:10},

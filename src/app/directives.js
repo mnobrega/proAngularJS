@@ -2,15 +2,55 @@
 
 //Directive used to set metisMenu and minimalize button
 angular.module('inspinia')
+    .directive('demoDirectiveChap152', function() {
+        return function(scope, element, attrs) {
+            var listItem = angular.element("<ol>");
+            element.append(listItem);
+            for (var i = 0; i < scope.names.length; i++) {
+                listElem.append(angular.element("<li>")
+                    .append(angular.element("<span>").text(scope.names[i])));
+            }
+        };
+    })
+    .directive('demoDirectiveChap15', function(){
+        return function (scope, element, attrs) {
+            var items = element.find("li");
+
+            items.css("color","red");
+
+            for (var i=0; i<items.length;i++){
+                if (items.eq(i).text() == "Oranges") {
+                    items.eq(i).css("font-weight","bold");
+                } else {
+                    items.eq(i).css("font-weight","normal");
+                }
+            }
+
+            console.log("Element count:" + items.length);
+            console.log("Font: " + items.css("font-weight"));
+        };
+    })
     .directive('unorderedList', function() {
         return function (scope, element, attrs) {
             var data = scope[attrs["unorderedList"]];
             var propertyExpression = attrs["listProperty"];
+
             if (angular.isArray(data)) {
                 var listElem = angular.element("<ul>");
                 element.append(listElem);
                 for (var i = 0; i < data.length; i++) {
-                    listElem.append(angular.element('<li>').text(scope.$eval(propertyExpression, data[i])));
+                    (function() {
+                        var itemElement = angular.element('<li>');
+                        listElem.append(itemElement);
+                        var index = i;
+                        var watcherFn = function(watchScope) {
+                            return watchScope.$eval(propertyExpression, data[index]);
+                        };
+                        scope.$watch(watcherFn, function(newValue, oldValue) {
+                            itemElement.text(newValue);
+                        });
+                    }());
+
                 }
             }
         }
@@ -27,7 +67,7 @@ angular.module('inspinia')
                 });
 
             }
-        };
+        }
     })
     .directive('minimalizaSidebar', function ($timeout) {
         return {

@@ -1,7 +1,31 @@
 <div id="chap15Div" class="wrapper wrapper-content animated" ng-app="cap15">
     <h3>Creating a Custom Directive</h3>
+    <div class="well" ng-controller="cap15Ctrl2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Fruit</h3>
+                <div demo-directive-chap152></div>
+            </div>
+        </div>
+    </div>
     <div class="well" ng-controller="cap15Ctrl1">
         <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Fruit</h3>
+            </div>
+            <div class="panel-body">
+                <ol demo-directive-chap-15>
+                    <li>Apples</li>
+                    <ul>
+                        <li>Bananas</li>
+                        <li>Cheeries</li>
+                        <li>Oranges</li>
+                    </ul>
+                    <li>Oranges</li>
+                    <li>Pears</li>
+                </ol>
+            </div>
+
             <div class="panel-heading">
                 <h3>Products</h3>
             </div>
