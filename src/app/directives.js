@@ -2,6 +2,26 @@
 
 //Directive used to set metisMenu and minimalize button
 angular.module('inspinia')
+    .directive('unorderedListLink', function () {
+        return {
+            link: function(scope, element, attrs) {
+                var data = scope[attrs["unorderedList"] || attrs["listSource"]];
+                var popertyExpression = attrs["listProperty"] || "price | currency";
+                if (angular.isArray(data))
+                {
+                    var listItem = angular.element("<ui>");
+                    if (element[0].nodeName == "$comment") {
+                        element.parent().append(listItem);
+                    } else {
+                        element.append(listElem);
+                    }
+                    for (var i=0; i < data.length; i++) {
+
+                    }
+                }
+            }
+        };
+    })
     .directive('unorderedList', function() {
         return function (scope, element, attrs) {
             var data = scope[attrs["unorderedList"]];
