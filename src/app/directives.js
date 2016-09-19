@@ -5,21 +5,22 @@ angular.module('inspinia')
     .directive('unorderedListLink', function () {
         return {
             link: function(scope, element, attrs) {
-                var data = scope[attrs["unorderedList"] || attrs["listSource"]];
-                var popertyExpression = attrs["listProperty"] || "price | currency";
-                if (angular.isArray(data))
-                {
-                    var listItem = angular.element("<ui>");
-                    if (element[0].nodeName == "$comment") {
-                        element.parent().append(listItem);
+                var data = scope[attrs["unorderedListLink"] || attrs["listSource"]];
+                var propertyExpression = attrs["listProperty"] || "price | currency";
+                if (angular.isArray(data)) {
+                    var listElem = angular.element("<ui>");
+                    if (element[0].nodeName == "#comment") {
+                        element.parent().append(listElem);
                     } else {
                         element.append(listElem);
                     }
                     for (var i=0; i < data.length; i++) {
-
+                        var itemElement = angular.element("<li>").text(scope.$eval(propertyExpression,data[i]));
+                        listElem.append(itemElement);
                     }
                 }
-            }
+            },
+            restrict: "EACM"
         };
     })
     .directive('unorderedList', function() {

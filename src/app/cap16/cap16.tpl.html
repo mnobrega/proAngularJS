@@ -4,9 +4,20 @@
     <div class="well" ng-controller="cap16Ctrl1">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3>Products</h3>
+
+                <h3>Directive as a Class Attribute Value (C)</h3>
                 <div class="panel-body">
-                    <div unordered-list="products" list-property="price | currency"></div>
+                    <div class="unordered-list-link: products, price | currencty"></div>
+                </div>
+
+                <h3>Directive as an Attribute (A)</h3>
+                <div class="panel-body">
+                    <div unordered-list-link="products" list-property="price | currency"></div>
+                </div>
+
+                <h3>Directive as an Element (E)</h3>
+                <div class="panel-body">
+                    <unordered-list-link list-source="products" list-property="price | currency" />
                 </div>
             </div>
         </div>
