@@ -2,6 +2,15 @@
 
 //Directive used to set metisMenu and minimalize button
 angular.module('inspinia')
+    .directive('unorderedListTemplate', function(){
+      return {
+          link: function (scope, element, attrs) {
+              scope.data = scope[attrs["unorderedListTemplate"]];
+          },
+          restrict: "A",
+          template: "<ul><li ng-repeat='item in data'>{{item.price | currency}}</li></ul>"
+      };
+    })
     .directive('unorderedListLink', function () {
         return {
             link: function(scope, element, attrs) {

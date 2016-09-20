@@ -9,4 +9,13 @@ angular.module("cap16.controllers",[])
         ];
     });
 
-angular.module("cap16.directives",[]);
+angular.module("cap16.directives",[])
+    .directive('unorderedListExtTemplate', function(){
+        return {
+            link: function(scope, element, attrs) {
+                scope.data = scope[attrs["unorderedListExtTemplate"]]
+            },
+            restrict: "A",
+            templateUrl: "item.tpl.html"
+        }
+    });
