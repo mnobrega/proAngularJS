@@ -2,6 +2,27 @@
 
 //Directive used to set metisMenu and minimalize button
 angular.module('inspinia')
+    .directive('unorderedListExtTemplateFunc', function(){
+        return {
+            link: function (scope, element, attrs) {
+                scope.data = scope[attrs["unorderedListExtTemplateFunc"]];
+            },
+            restrict: "A",
+            templateUrl: function(elem, attrs) {
+                return attrs["template"] == "table" ? "app/cap16/table.tpl.html" : "app/cap16/item.tpl.html";
+            }
+        }
+    })
+    .directive('unorderedListExtTemplate', function(){
+        return {
+            link: function(scope, element, attrs) {
+                scope.data = scope[attrs["unorderedListExtTemplate"]]
+            },
+            restrict: "A",
+            templateUrl: "app/cap16/table.tpl.html",
+            replace: true
+        }
+    })
     .directive('unorderedListTemplate', function(){
       return {
           link: function (scope, element, attrs) {

@@ -5,8 +5,26 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
+                <h3>Managing Directive Scopes</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body" scope-demo ng-controller="cap16Ctrl2"></div>
+                    <div class="panel-body" scope-demo ng-controller="cap16Ctrl3"></div>
+                </div>
+            </div>
+
+            <div class="panel-heading">
+                <h3>Selecting an External Template with a Function</h3>
+                <div unordered-list-ext-template-func="products">
+                    This is where the list will go
+                </div>
+                <div unordered-list-ext-template-func="products" template="table">
+                    This is where the list will go
+                </div>
+            </div>
+
+            <div class="panel-heading">
                 <h3>Using Directive External Templates</h3>
-                <div unordered-list-ext-template="products">
+                <div unordered-list-ext-template="products" class="table table-striped">
                     This is where the list will go
                 </div>
             </div>

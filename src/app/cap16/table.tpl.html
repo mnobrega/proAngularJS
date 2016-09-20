@@ -1,0 +1,12 @@
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in data">
+            <td>{{item.name}}</td>
+            <td>{{item.price | currency}}</td>
+        </tr>
+    </tbody>
+</table>
