@@ -1,8 +1,39 @@
+<script type="text/ng-template" id="scopeTemplate">
+    <div class="panel-body">
+        <p>Name: <input ng-model="data.name" /></p>
+        <p>City: <input ng-model="city" /></p>
+        <p>Country: <input ng-model="country" /></p>
+    </div>
+</script>
 <div id="chap15Div" class="wrapper wrapper-content animated" ng-app="cap16">
     <h3>Creating Complex Directives</h3>
 
     <div class="well" ng-controller="cap16Ctrl1">
         <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3>Isolated Scope - Great for reusing a directive</h3>
+                <div class="panel panel-default" ng-controller="cap16Ctrl4">
+                    <div class="panel-body" scope-demo-2-isolated></div>
+                    <div class="panel-body" scope-demo-2-isolated></div>
+                </div>
+            </div>
+
+            <div class="panel-heading">
+                <h3>Expanding Directive Instance Example</h3>
+                <div class="panel panel-default" ng-controller="cap16Ctrl4">
+                    <div class="panel-body" scope-demo-2></div>
+                    <div class="panel-body" scope-demo-2></div>
+                </div>
+            </div>
+
+            <div class="panel-heading">
+                <h3>Giving Each Directive Instance Its Own Scope</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body" scope-demo-with-scope></div>
+                    <div class="panel-body" scope-demo-with-scope></div>
+                </div>
+            </div>
 
             <div class="panel-heading">
                 <h3>Managing Directive Scopes</h3>

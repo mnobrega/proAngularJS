@@ -1,6 +1,10 @@
 angular.module("cap16",["cap16.controllers","cap16.directives"]);
 
 angular.module("cap16.controllers",[])
+    .controller("cap16Ctrl4", function($scope) {
+        $scope.data = {name: "Addam"};
+        $scope.city = "London";
+    })
     .controller("cap16Ctrl2", function($scope) {
         //do nothing
     })
@@ -16,6 +20,28 @@ angular.module("cap16.controllers",[])
     });
 
 angular.module("cap16.directives",[])
+    .directive("scopeDemo2Isolated", function() {
+        return {
+            template: function() {
+                return angular.element(document.querySelector("#scopeTemplate")).html();
+            },
+            scope: {}
+        }
+    })
+    .directive("scopeDemo2", function() {
+        return {
+            template : function() {
+                return angular.element(document.querySelector("#scopeTemplate")).html();
+            },
+            scope: true
+        }
+    })
+    .directive("scopeDemoWithScope", function() {
+        return {
+            template: "<div class='panel-body'>Name: <input ng-model=name /></div>",
+            scope: true
+        }
+    })
     .directive("scopeDemo", function() {
         return {
             template: "<div class='panel-body'>Name: <input ng-model=name /></div>"
