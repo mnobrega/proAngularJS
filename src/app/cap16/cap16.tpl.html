@@ -15,6 +15,11 @@
         <p>Data Value: <input ng-model="local" /></p>
     </div>
 </script>
+<script type="text/ng-template" id="scopeTemplateExpression">
+    <div class="panel-body">
+        <p>Name: {{local}}, City: {{cityFn()}}</p>
+    </div>
+</script>
 <div id="chap15Div" class="wrapper wrapper-content animated" ng-app="cap16">
     <h3>Creating Complex Directives</h3>
 
@@ -22,6 +27,15 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
+                <h3>Evaluating Scope Expressions</h3>
+                <div class="panel panel-default" ng-controller="cap16Ctrl6">
+                    <div class="panel-body">
+                        Direct Binding: <input ng-model="data.name" />
+                    </div>
+                    <div class="panel-body" scope-demo-2-isolated-expression
+                         city="getCity(data.name)" nameprop="data.name"></div>
+                </div>
+
                 <h3>Two-way binding</h3>
                 <div class="panel panel-default" ng-controller="cap16Ctrl5">
                     <div class="panel-body">

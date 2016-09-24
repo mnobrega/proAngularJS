@@ -1,6 +1,12 @@
 angular.module("cap16",["cap16.controllers","cap16.directives"]);
 
 angular.module("cap16.controllers",[])
+    .controller("cap16Ctrl6", function($scope) {
+        $scope.data = {name:"Adam",defaultCity:"London"};
+        $scope.getCity = function(name) {
+            return name == "Adam" ? $scope.data.defaultCity : "Unknown";
+        }
+    })
     .controller("cap16Ctrl5", function($scope) {
         $scope.data = {name:"Marcio"};
     })
@@ -23,10 +29,21 @@ angular.module("cap16.controllers",[])
     });
 
 angular.module("cap16.directives",[])
+    .directive("scopeDemo2IsolatedExpression", function() {
+        return {
+            template: function() {
+                return angular.element(document.querySelector("#scopeTemplateExpression")).html();
+            },
+            scope : {
+                local: "=nameprop",
+                cityFn: "&city"
+            }
+        }
+    })
     .directive("scopeDemo2IsolatedTwoWay", function() {
         return {
             template: function() {
-                return angular.element(document.querySelector("scopeTemplate2WayBinding")).html();
+                return angular.element(document.querySelector("#scopeTemplate2WayBinding")).html();
             },
             scope: {
                 local: "=nameprop"
