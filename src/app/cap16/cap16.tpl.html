@@ -5,11 +5,40 @@
         <p>Country: <input ng-model="country" /></p>
     </div>
 </script>
+<script type="text/ng-template" id="scopeTemplateBinding">
+    <div class="panel-body">
+        <p>Data Value: {{local}}</p>
+    </div>
+</script>
+<script type="text/ng-template" id="scopeTemplate2WayBinding">
+    <div class="panel-body">
+        <p>Data Value: <input ng-model="local" /></p>
+    </div>
+</script>
 <div id="chap15Div" class="wrapper wrapper-content animated" ng-app="cap16">
     <h3>Creating Complex Directives</h3>
 
-    <div class="well" ng-controller="cap16Ctrl1">
+    <div class="well">
         <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3>Two-way binding</h3>
+                <div class="panel panel-default" ng-controller="cap16Ctrl5">
+                    <div class="panel-body">
+                        Direct Binding: <input ng-model="data.name" />
+                    </div>
+                    <div class="panel-body" scope-demo-2-isolated-two-way nameprop="data.name"></div>
+                </div>
+
+                <h3>Binding via an Attribute value</h3>
+                <div class='panel panel-default' ng-controller="cap16Ctrl4">
+                    <div class="panel-body">
+                        Direct Binding: <input ng-model="data.name" />
+                    </div>
+                    <div class="panel-body" scope-demo-2-isolated-binding nameprop="{{data.name}}"></div>
+                    <div class="panel-body" scope-demo-2-isolated-binding nameprop="{{data.name + 'Freeman'}}"></div>
+                </div>
+            </div>
 
             <div class="panel-heading">
                 <h3>Isolated Scope - Great for reusing a directive</h3>
@@ -37,13 +66,13 @@
 
             <div class="panel-heading">
                 <h3>Managing Directive Scopes</h3>
-                <div class="panel panel-default">
-                    <div class="panel-body" scope-demo ng-controller="cap16Ctrl2"></div>
-                    <div class="panel-body" scope-demo ng-controller="cap16Ctrl3"></div>
+                <div class="panel panel-default" ng-controller="cap16Ctrl2">
+                    <div class="panel-body" scope-demo></div>
+                    <div class="panel-body" scope-demo></div>
                 </div>
             </div>
 
-            <div class="panel-heading">
+            <div class="panel-heading" ng-controller="cap16Ctrl1">
                 <h3>Selecting an External Template with a Function</h3>
                 <div unordered-list-ext-template-func="products">
                     This is where the list will go
@@ -53,21 +82,21 @@
                 </div>
             </div>
 
-            <div class="panel-heading">
+            <div class="panel-heading" ng-controller="cap16Ctrl1">
                 <h3>Using Directive External Templates</h3>
                 <div unordered-list-ext-template="products" class="table table-striped">
                     This is where the list will go
                 </div>
             </div>
 
-            <div class="panel-heading">
+            <div class="panel-heading" ng-controller="cap16Ctrl1">
                 <h3>Using Directive Templates</h3>
                 <div unordered-list-template="products">
                     This is where the list will go
                 </div>
             </div>
 
-            <div class="panel-heading">
+            <div class="panel-heading" ng-controller="cap16Ctrl1">
 
                 <h3>Directive as a Comment (M)</h3>
                 <div class="panel-body">
