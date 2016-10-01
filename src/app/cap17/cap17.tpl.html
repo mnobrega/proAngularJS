@@ -3,7 +3,8 @@
         <div class="panel-heading">
             <h4>This is the panel</h4>
         </div>
-        <div class="panel-body" ng-transclude></div>
+        <div class="panel-body" ng-transclude>
+        </div>
     </div>
 </script>
 <div id="chap17Div" class="wrapper wrapper-content animated" ng-app="cap17">
@@ -11,11 +12,31 @@
 
     <div class="well">
         <div class="panel panel-default">
+            <div class="panel-body" ng-controller="cap17Ctrl2">
+                <h3>Using Compile Functions</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr simple-repeater source="products" item-name="item">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-default text" ng-click="changeData()">Change</button>
+            </div>
 
-            <div class="panel-heading">
+            <div class="panel-body" ng-controller="cap17Ctrl1">
                 <h3>Transclusion</h3>
+                <cap-17-panel>
+                    The data value comes from the: {{dataSource}}
+                </cap-17-panel>
             </div>
         </div>
     </div>
-
 </div>
