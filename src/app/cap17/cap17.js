@@ -29,7 +29,7 @@ angular.module("cap17.controllers",[])
 angular.module("cap17.directives",[])
     .directive("productItem", function() {
         return {
-            template: document.querySelector("#cap17productTemplate").outerText
+            template: document.querySelector("#cap17ProductTemplate").outerText
         }
     })
     .directive("productTable",function() {
