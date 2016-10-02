@@ -3,9 +3,9 @@ angular.module("cap17",["cap17.controllers","cap17.directives"]);
 angular.module("cap17.controllers",[])
     .controller("cap17Ctrl3", function($scope) {
         $scope.products = [
-            {name: "Apples", price: 1.20},
-            {name: "Bananas", price: 2.42},
-            {name: "Pears", price: 2.02}
+            {name: "Apples", price: 1.20, quantity: 2},
+            {name: "Bananas", price: 2.42, quantity: 3},
+            {name: "Pears", price: 2.02, quantity: 1}
         ];
     })
     .controller("cap17Ctrl2", function($scope) {
@@ -29,7 +29,7 @@ angular.module("cap17.controllers",[])
 angular.module("cap17.directives",[])
     .directive("productItem", function() {
         return {
-            template: document.querySelector("#cap17ProductTemplate").outerText
+            template: document.querySelector("#cap17productTemplate").outerText
         }
     })
     .directive("productTable",function() {
