@@ -29,7 +29,7 @@ angular.module("cap17.controllers",[])
 angular.module("cap17.directives",[])
     .directive("productItem", function() {
         return {
-            template: document.querySelector("#cap17ProductTemplate").outerText
+            template: angular.element(document.querySelector("#cap17ProductTemplate")).html()
         }
     })
     .directive("productTable",function() {
@@ -46,7 +46,7 @@ angular.module("cap17.directives",[])
             link: function(scope, element, attrs) {
                 scope.dataSource = "directive";
             },
-            restruct : "E", /* element */
+            restrict : "E", /* element */
             scope: true, /* false to disconnect the directive from the controller */
             template: function() {
                 return angular.element(
