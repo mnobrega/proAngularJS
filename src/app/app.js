@@ -2,7 +2,7 @@
 
 angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router',
     'ui.bootstrap','gettext','customFilters','cart','cap9','cap10','cap11','cap12','cap13', 'cap14','cap15',
-    'cap16', 'cap17'])
+    'cap16', 'cap17','cap18'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
@@ -88,6 +88,10 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         .state('index.cap17', {
             url: "/cap17",
             templateUrl: "app/cap17/cap17.tpl.html"
+        })
+        .state('index.cap18', {
+            url: "/cap18",
+            templateUrl: "app/cap18/cap18.tpl.html"
         })
         .state('login',{
             url: "/login",
