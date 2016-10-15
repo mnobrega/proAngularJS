@@ -3,7 +3,7 @@ angular.module("cap18",["cap18.controllers","cap18.directives"]);
 angular.module("cap18.controllers",[])
     .controller("cap18Ctrl1", function ($scope) {
         $scope.data = {
-            cities: ["London","New York","Paris"],
+            cities: ["London","New York","Paris","Lisbon"],
             totalClicks: 0
         };
 
@@ -13,7 +13,7 @@ angular.module("cap18.controllers",[])
     });
 
 angular.module("cap18.directives",[])
-    .directive ("triButton", function() {
+    .directive ("multiButton", function() {
        return {
            scope: { counter: "=counter"},
            link: function(scope, element, attrs) {
