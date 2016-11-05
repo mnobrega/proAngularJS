@@ -5,10 +5,39 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3>Accessing the DOM API Global Objectse</h3>
+
+                <div class="well" ng-controller="cap19Ctrl4">
+                    <h4>Accessing the URL</h4>
+                    <div class="panel panel-default">
+                        <h5 class="panel-heading">URL</h5>
+                        <div class="panel-body">
+                            <p>The URL is: {{url}}</p>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" ng-click="setUrl('reset')">Reset</button>
+                                <button class="btn btn-primary" ng-click="setUrl('path')">Path</button>
+                                <button class="btn btn-primary" ng-click="setUrl('hash')">Hash</button>
+                                <button class="btn btn-primary" ng-click="setUrl('search')">Search</button>
+                                <button class="btn btn-primary" ng-click="setUrl('url')">URL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="well" ng-controller="cap19Ctrl3">
+                    <h4>Using Intervals and Timeouts</h4>
+                    <div class="panel panel-default">
+                        <h5 class="panel-heading">Time</h5>
+                        <div class="panel-body">
+                            The time is: {{time}}
+                        </div>
+                    </div>
+                </div>
+
                 <div class="well" ng-controller="cap19Ctrl2">
                     <h4>Accessing the Document object</h4>
                     <button class="btn btn-primary" id="cap19Ctrl2Button">Click Me</button>
                 </div>
+
                 <div class="well" ng-controller="cap19Ctrl1">
                     <h4>Accessing the Window object</h4>
                     <button class="btn btn-primary" ng-click="displayAlert('Clicked')">Click Me</button>
