@@ -3,7 +3,22 @@
 angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router',
     'ui.bootstrap','gettext','customFilters','cart','cap9','cap10','cap11','cap12','cap13', 'cap14','cap15',
     'cap16', 'cap17','cap18','cap19'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider,$anchorScrollProvider,$interpolateProvider, $locationProvider) {
+
+      if (window.history && history.pushState) {
+          $locationProvider.html5Mode({
+              enabled: false,
+              requireBase: false
+          });
+      }
+
+      //disable auto scrolling
+      //$anchorScrollProvider.disableAutoScrolling();
+
+      //change interpolation symbols
+      //$interpolateProvider.startSymbol("!!");
+      //$interpolateProvider.endSymbol("!!");
+
     $stateProvider
         .state('index', {
             abstract: true,

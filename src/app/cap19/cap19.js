@@ -1,15 +1,8 @@
 angular.module("cap19",["cap19.controllers","cap19.directives","cap19.services"]);
 
 angular.module("cap19.controllers",[])
-    .config(function($locationProvider, $anchorScrollProvider) {
-        if (window.history && history.pushState) {
-            $locationProvider.html5Mode({
-                enabled: false,
-                requireBase: false
-            });
-        }
-
-        $anchorScrollProvider.disableAutoScrolling(); //disable auto scrolling
+    .controller("cap19Ctrl12", function($scope) {
+        $scope.cities = ["London","Paris","New York","Lisbon"];
     })
     .controller("cap19Ctrl11", function($scope) {
         $scope.dataValue = "100.23";
@@ -104,6 +97,15 @@ angular.module("cap19.controllers",[])
     });
 
 angular.module("cap19.directives",[])
+    .directive("evalExpression4", function($compile) {
+        return function (scope, element, attrs) {
+            var content = "<ul><li ng-repeat='city in cities'>{{city}}</li></ul>";
+            var listElem = angular.element(content);
+            var compileFn = $compile(listElem);
+            compileFn(scope);
+            element.append(listElem);
+        }
+    })
     .directive("evalExpression3", function($interpolate) {
         var interpolationFn = $interpolate("The total is: {{amount | currency}} (including tax)");
         return {
