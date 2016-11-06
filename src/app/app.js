@@ -5,7 +5,6 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
     'cap16', 'cap17','cap18','cap19'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-
         .state('index', {
             abstract: true,
             url: "/index",
@@ -103,5 +102,6 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         });
 
     $urlRouterProvider.otherwise('/login');
+
   })
 ;
