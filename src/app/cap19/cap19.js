@@ -104,6 +104,23 @@ angular.module("cap19.controllers",[])
     });
 
 angular.module("cap19.directives",[])
+    .directive("evalExpression3", function($interpolate) {
+        var interpolationFn = $interpolate("The total is: {{amount | currency}} (including tax)");
+        return {
+            scope: {
+                amount: "=amount",
+                tax: "=tax"
+            },
+            link: function(scope, element, attrs) {
+                scope.$watch("amount", function(newValue) {
+                    var localData = {
+                        total: Number(newValue) + (Number(newValue) * (Number(scope.tax)/100))
+                    };
+                    element.text(interpolationFn(scope, localData));
+                });
+            }
+        }
+    })
     .directive("evalExpression2", function($parse) {
         var expressionFn = $parse("total | currency");
         return {
