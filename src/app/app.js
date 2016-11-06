@@ -2,7 +2,7 @@
 
 angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router',
     'ui.bootstrap','gettext','customFilters','cart','cap9','cap10','cap11','cap12','cap13', 'cap14','cap15',
-    'cap16', 'cap17','cap18','cap19'])
+    'cap16', 'cap17','cap18','cap19',"cap20"])
   .config(function ($stateProvider, $urlRouterProvider,$anchorScrollProvider,$interpolateProvider, $locationProvider) {
 
       if (window.history && history.pushState) {
@@ -110,6 +110,10 @@ angular.module('inspinia', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
         .state('index.cap19', {
             url: "/cap19",
             templateUrl: "app/cap19/cap19.tpl.html"
+        })
+        .state('index.cap20', {
+            url: "/cap20",
+            templateUrl: "app/cap20/cap20.tpl.html"
         })
         .state('login',{
             url: "/login",
