@@ -7,6 +7,36 @@
 
                 <h3>Making Ajax Requests</h3>
 
+                <div class="well" ng-controller="cap20Ctrl1">
+                    <h4>Making the Ajax Request and Receiving Ajax Responses</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-hide="products.length">
+                                        <td colspan="3" class="text-center">No Data</td>
+                                    </tr>
+                                    <tr ng-repeat="item in products">
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.category}}</td>
+                                        <td>{{item.price | currency}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p><button class="btn btn-primary" ng-click="loadJSONData()">Load JSON Data</button> </p>
+                            <p><button class="btn btn-primary" ng-click="loadXMLData()">Load XML Data</button> </p>
+                            <p><button class="btn btn-primary" ng-click="loadXMLDataWithTransform()">Load XML Data with Transform</button> </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
