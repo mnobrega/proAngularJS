@@ -1,0 +1,24 @@
+<div id="chap21Div" class="wrapper wrapper-content animated" ng-app="cap21">
+    <h3>Services for REST</h3>
+
+    <div class="well">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h3>RESTful API through explicit Ajax requests</h3>
+                <div class="panel" ng-controller="cap211Ctrl">
+                    <h4>Products</h4>
+                    <ng-include src="'app/cap21/tableView.html'" ng-show="displayMode == 'list'"></ng-include>
+                    <ng-include src="'app/cap21/editorView.html'" ng-show="displayMode == 'edit'"></ng-include>
+                </div>
+
+                <h3>RESTful API without exposing the Ajax requests</h3>
+
+                <h3>Tailor the Ajax requests used by the $resource</h3>
+
+                <h3>Components that work with RESTful data</h3>
+
+            </div>
+        </div>
+    </div>
+</div>
