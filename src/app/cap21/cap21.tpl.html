@@ -6,10 +6,18 @@
             <div class="panel-body">
 
                 <h3>RESTful API through explicit Ajax requests</h3>
+                <h4>- DummyData -</h4>
                 <div class="panel" ng-controller="cap211Ctrl">
                     <h4>Products</h4>
                     <ng-include src="'app/cap21/tableView.html'" ng-show="displayMode == 'list'"></ng-include>
                     <ng-include src="'app/cap21/editorView.html'" ng-show="displayMode == 'edit'"></ng-include>
+                </div>
+
+                <h4>- API Data -</h4>
+                <div class="panel" ng-controller="cap211Ctrl">
+                    <h4>Products</h4>
+                    <ng-include src="'app/cap21/tableViewAPIData.html'" ng-show="displayMode == 'list'"></ng-include>
+                    <ng-include src="'app/cap21/editorViewAPI.html'" ng-show="displayMode == 'edit'"></ng-include>
                 </div>
 
                 <h3>RESTful API without exposing the Ajax requests</h3>
